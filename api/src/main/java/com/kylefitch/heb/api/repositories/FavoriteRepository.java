@@ -5,5 +5,5 @@ import com.kylefitch.heb.api.entities.Favorite;
 import java.util.List;
 
 public interface FavoriteRepository extends CrudRepository<Favorite, Integer> {
-    List<Favorite> findByUserId(Integer userId);
+    List<Favorite> findByUsername(String username);
 }

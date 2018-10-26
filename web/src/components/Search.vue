@@ -16,6 +16,7 @@ export default {
   methods: {
     handleSearchClick () {
       this.$store.dispatch('searchGifs', this.searchTerm)
+      this.$router.push({ name: 'SearchResults'})
     }
   },
 
@@ -28,7 +29,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #search-box {
-    margin-top: 10px;
-  }
+
 </style>

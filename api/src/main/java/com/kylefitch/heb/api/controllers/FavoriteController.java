@@ -20,9 +20,9 @@ public class FavoriteController {
         return favoriteRepository.save(favorite);
     }
 
-    @GetMapping("/favorites/{userId}")
-    Iterable<Favorite> favorites(@PathVariable Integer userId) {
-        return favoriteRepository.findByUserId(userId);
+    @GetMapping("/favorites/{username}")
+    Iterable<Favorite> favorites(@PathVariable String username) {
+        return favoriteRepository.findByUsername(username);
     }
 
 }

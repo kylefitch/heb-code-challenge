@@ -12,7 +12,7 @@ public class Favorite {
     private Integer id;
     private String url;
     private String previewUrl;
-    private Integer userId;
+    private String username;
 
     public Integer getId() {
         return id;
@@ -38,8 +38,8 @@ public class Favorite {
         this.previewUrl = previewUrl;
     }
 
-    public Integer getUserId() { return userId; }
+    public String getUsername() { return username; }
 
-    public void setUserId(Integer userId) { this.userId = userId; }
+    public void setUsername(String username) { this.username = username; }
 
 }

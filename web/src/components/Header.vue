@@ -3,6 +3,7 @@
     <div class="col-md-4">
       <Search></Search>
     </div>
+    
   </div>
 </template>
 
