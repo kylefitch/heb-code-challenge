@@ -23,7 +23,7 @@ export default new Router({
       props: true
     },
     {
-      path: 'favorites',
+      path: '/favorites',
       name: 'Favorites',
       component: Favorites,
       props: true

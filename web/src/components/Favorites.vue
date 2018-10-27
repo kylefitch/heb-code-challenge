@@ -18,6 +18,7 @@ export default {
   computed: mapState(['favorites']),
 
   beforeCreate () {
+    // Load favorites before component creation
     this.$store.dispatch('getFavorites')
   }
 

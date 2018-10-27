@@ -17,7 +17,7 @@ export default {
     SearchResult
   },
 
-  computed: mapState(['searchResults'])
+  computed: mapState(['searchResults', 'offset', 'searchTerm'])
 
 }
 </script>

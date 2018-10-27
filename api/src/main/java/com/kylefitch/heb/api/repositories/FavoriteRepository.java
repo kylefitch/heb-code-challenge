@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface FavoriteRepository extends CrudRepository<Favorite, Integer> {
     List<Favorite> findByUsername(String username);
+    List<Favorite> findByUsernameAndCategory(String username, String category);
 }

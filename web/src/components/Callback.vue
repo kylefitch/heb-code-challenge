@@ -10,6 +10,7 @@
     props: ['auth'],
 
     data () {
+      // Call handleAuthentication on component load
       this.auth.handleAuthentication()
       return {}
     }

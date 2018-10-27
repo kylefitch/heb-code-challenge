@@ -15,6 +15,7 @@ export default class AuthService {
     this.isAuthenticated = this.isAuthenticated.bind(this)
   }
 
+  // Configure auth0 request
   auth0 = new auth0.WebAuth({
     domain: 'kylefitch.auth0.com',
     clientID: 'EWnZfdbqZu0vvVI7T3oxo5LsxPgT1EBg',
@@ -29,6 +30,7 @@ export default class AuthService {
   }
 
   handleAuthentication () {
+    // Parse response and set session data
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult)
@@ -41,33 +43,30 @@ export default class AuthService {
   }
 
   setSession (authResult) {
-    // Set the time that the Access Token will expire at
-    let expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    )
+    // Set auth data in local storage
+    let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime())
     localStorage.setItem('access_token', authResult.accessToken)
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_at', expiresAt)
+    // Decode id_token
     let decoded = jwt.decode(authResult.idToken)
+    // Set username form decoded token
     localStorage.setItem('username', decoded.name)
     this.authNotifier.emit('authChange', { authenticated: true })
   }
 
   logout () {
-    // Clear Access Token and ID Token from local storage
+    // Logout and clear local storage
     localStorage.removeItem('access_token')
     localStorage.removeItem('id_token')
     localStorage.removeItem('expires_at')
     localStorage.removeItem('username')
-    this.userProfile = null
     this.authNotifier.emit('authChange', false)
-    // navigate to the home route
     router.push({ name: 'SearchResults'})
   }
 
   isAuthenticated () {
-    // Check whether the current time is past the
-    // Access Token's expiry time
+    // Check for current authentication
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'))
     return new Date().getTime() < expiresAt
   }

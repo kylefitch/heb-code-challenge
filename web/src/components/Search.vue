@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="search-box" class="input-group">
-      <input type="text" class="form-control" placeholder="" v-model="searchTerm">
+      <input type="text" class="form-control" placeholder="" v-model="term">
       <div class="input-group-append">
         <button class="btn btn-primary" type="button" id="search-button" @click="handleSearchClick">Search</button>
       </div>
@@ -13,16 +13,22 @@
 export default {
   name: "Search",
 
-  methods: {
-    handleSearchClick () {
-      this.$store.dispatch('searchGifs', this.searchTerm)
-      this.$router.push({ name: 'SearchResults'})
+  computed: {
+    // Getter and setter for search term in vuex
+    term: {
+      get () {
+        return this.$store.state.searchTerm
+      },
+      set (value) {
+        this.$store.commit('setSearchTerm', value)
+      }
     }
   },
 
-  data () {
-    return {
-      searchTerm: ''
+  methods: {
+    handleSearchClick () {
+      this.$store.dispatch('searchGifs', this.term)
+      this.$router.push({ name: 'SearchResults'})
     }
   }
 }

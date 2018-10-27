@@ -6,14 +6,14 @@
           <Search></Search>
         </div>
         <div class="col-md-3">
-          <button class="btn btn-primary btn-margin" v-if="authenticated" @click="handleFavoritesClick">Favorites</button>
+          <button class="btn btn-success" v-if="authenticated" @click="handleFavoritesClick">Favorites</button>
         </div>
         <div class="col-md-4">
           <div id="username" v-if="authenticated">{{ username }}</div>
         </div>
         <div class="col-md-1">
-          <button class="btn btn-primary btn-margin" v-if="!authenticated" @click="login()">Log In</button>
-          <button class="btn btn-primary btn-margin" v-if="authenticated" @click="logout()">Log Out</button>
+          <button class="btn btn-danger" v-if="!authenticated" @click="login()">Log In</button>
+          <button class="btn btn-danger" v-if="authenticated" @click="logout()">Log Out</button>
         </div>
       </div>
       <router-view :auth="auth" :authenticated="authenticated"></router-view>
@@ -24,6 +24,8 @@
 <script>
 import Search from './components/Search'
 import AuthService from './auth/AuthService'
+
+// Setup auth service
 const auth = new AuthService();
 const { login, logout, authenticated, authNotifier } = auth;
 
@@ -35,6 +37,7 @@ export default {
   },
 
   data () {
+    // On auth change event, set authentication status
     authNotifier.on('authChange', authState => {
       this.authenticated = authState.authenticated
       this.username = localStorage.getItem('username')
