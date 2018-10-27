@@ -23,7 +23,7 @@ To run the API app, from the /api directory, use the following command:
 
 The web app is a Vue.js application.
 
-The web app requires node.js.
+The web app requires node.js. From the /web directory, run `npm install` to install dependencies.
 
 To run the web app, from the /web directory, use the following command:
 
