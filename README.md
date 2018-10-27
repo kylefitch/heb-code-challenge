@@ -1,10 +1,10 @@
 # heb-code-challenge
 
-The app is divided in to two parts, the web app and the api app.
+The app is divided in to two parts, the web app and the API app. The web app is a Vue.js application. Additionally, the web app uses Auth0 for authentication and authorization. The API app is a Spring application. The API is secured using JWT from Auth0. User login data is stored on Auth0, and application data is stored in a MySQL database.
 
 ## API
 
-The API app is a Spring Boot application.
+The API app is a Spring application.
 
 The API app requires MySQL. After MySQL is up and running, create a db and a user, and change the settings in the application.properties file.
 
