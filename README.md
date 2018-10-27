@@ -2,7 +2,7 @@
 
 The app is divided in to two parts, the web app and the api app.
 
-# API
+## API
 
 The API app is a Spring Boot application.
 
@@ -19,7 +19,7 @@ To run the API app, from the /api directory, use the following command:
 ./gradlew bootRun
 ```
 
-# Web
+## Web
 
 The web app is a Vue.js application.
 
